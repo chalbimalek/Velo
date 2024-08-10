@@ -1,0 +1,74 @@
+<div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+  <div>
+    <div class="text-center">
+      <h4 class="modal-title text-primary">Add New Post</h4>
+    </div>
+  
+    <div>
+      <form class="row g-3" [formGroup]="addPostForm">
+        <div class="col-md-12">
+          <label for="inputLastName1" class="form-label">Topic</label>
+          <div class="input-group">
+            <span class="input-group-text bg-transparent">
+              <i class="bx bxs-user"></i>
+            </span>
+            <input
+              formControlName="topic"
+              type="text"
+              class="form-control border-start-0"
+              id="inputLastName1"
+            />
+          </div>
+          <!-- Affichage du message d'erreur pour le champ "Topic" -->
+          <div
+            class="alert alert-danger"
+            *ngIf="
+              addPostForm.get('topic')?.hasError('required') &&
+              addPostForm.get('topic')?.touched
+            "
+          >
+            Topic is required.
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <label for="inputLastName2" class="form-label">Contenu</label>
+          <div class="input-group">
+            <span class="input-group-text bg-transparent">
+              <i class="bx bxs-user"></i>
+            </span>
+            <input
+              formControlName="contenu"
+              type="text"
+              class="form-control border-start-0"
+              id="inputLastName2"
+            />
+          </div>
+          <!-- Affichage du message d'erreur pour le champ "contenu" -->
+          <div
+            class="alert alert-danger"
+            *ngIf="
+              addPostForm.get('contenu')?.hasError('required') &&
+              addPostForm.get('contenu')?.touched
+            "
+          >
+            Topic is required.
+          </div>
+        </div>
+  
+        <div class="col-md-12">
+          <div class="d-flex justify-content-center">
+            <button
+              type="submit"
+              class="btn btn-danger px-5"
+              (click)="addPost()"
+              [disabled]="addPostForm.invalid"
+            >
+              Save
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

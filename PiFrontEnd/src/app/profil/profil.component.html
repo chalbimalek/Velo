@@ -1,0 +1,337 @@
+<div class="breadcrumbs">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 col-md-6 col-12">
+          <div class="breadcrumbs-content">
+            <h1 class="page-title">Profile Settings</h1>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-12">
+          <ul class="breadcrumb-nav">
+            <li><a href="index.html">Home</a></li>
+            <li>Profile Settings</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Breadcrumbs -->
+  <div class="center-container">
+
+      <!-- Utilisez une classe pour définir la taille et la couleur de l'icône -->
+      <img  (click)="toggleNotifications1()" src="https://cdn.pixabay.com/photo/2017/06/13/12/52/bell-2398760_1280.png" style="height: 40px; width: 40px; border-radius: 50%; border: 0.2px solid #85065d;cursor: pointer;" alt="Logo">
+      <!-- Affichez le nombre total de notifications avec un badge -->
+      <span style="color: #960505;font-size: larger;margin-top: -2%;" class="notification-badge">{{ notifications.length }}</span>
+  </div>
+
+  <!-- Start Dashboard Section -->
+  <section class="dashboard section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3 col-md-4 col-12">
+          <!-- Start Dashboard Sidebar -->
+          <div class="dashboard-sidebar">
+            <div class="user-image">
+              <img src="assets/images/dashboard/user-image.jpg" alt="#" />
+              <h3>
+                Steve Aldridge
+                <span><a href="javascript:void(0)">@username</a></span>
+              </h3>
+            </div>
+
+            <!-- Bouton ou lien pour représenter l'icône de notification -->
+
+            <div class="dashboard-menu">
+              <ul>
+                <li>
+                  <a href="dashboard.html"
+                    ><i class="lni lni-dashboard"></i> Dashboard</a
+                  >
+                </li>
+                <li>
+                  <a class="active" href="profile-settings.html"
+                    ><i class="lni lni-pencil-alt"></i> Edit Profile</a
+                  >
+                </li>
+                <li>
+                  <a href="my-items.html"
+                    ><i class="lni lni-bolt-alt"></i> My Ads</a
+                  >
+                </li>
+                <li>
+                  <a href="favourite-items.html"
+                    ><i class="lni lni-heart"></i> Favourite ads</a
+                  >
+                </li>
+                <li>
+                  <a href="post-item.html"
+                    ><i class="lni lni-circle-plus"></i> Post An Ad</a
+                  >
+                </li>
+                <li>
+                  <a href="bookmarked-items.html"
+                    ><i class="lni lni-bookmark"></i> Bookmarked</a
+                  >
+                </li>
+                <li>
+                  <a href="messages.html"
+                    ><i class="lni lni-envelope"></i> Messages</a
+                  >
+                </li>
+                <li>
+                  <a href="delete-account.html"
+                    ><i class="lni lni-trash"></i> Close account</a
+                  >
+                </li>
+                <li>
+                  <a href="invoice.html"
+                    ><i class="lni lni-printer"></i> Invoice</a
+                  >
+                </li>
+              </ul>
+              <div class="button">
+                <a class="btn" href="javascript:void(0)" (click)="logout()"
+                  >Logout</a
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Start Dashboard Sidebar -->
+          <div class="card">
+            <div class="title">
+                <span>
+                    <svg width="20" fill="currentColor" height="20" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1362 1185q0 153-99.5 263.5t-258.5 136.5v175q0 14-9 23t-23 9h-135q-13 0-22.5-9.5t-9.5-22.5v-175q-66-9-127.5-31t-101.5-44.5-74-48-46.5-37.5-17.5-18q-17-21-2-41l103-135q7-10 23-12 15-2 24 9l2 2q113 99 243 125 37 8 74 8 81 0 142.5-43t61.5-122q0-28-15-53t-33.5-42-58.5-37.5-66-32-80-32.5q-39-16-61.5-25t-61.5-26.5-62.5-31-56.5-35.5-53.5-42.5-43.5-49-35.5-58-21-66.5-8.5-78q0-138 98-242t255-134v-180q0-13 9.5-22.5t22.5-9.5h135q14 0 23 9t9 23v176q57 6 110.5 23t87 33.5 63.5 37.5 39 29 15 14q17 18 5 38l-81 146q-8 15-23 16-14 3-27-7-3-3-14.5-12t-39-26.5-58.5-32-74.5-26-85.5-11.5q-95 0-155 43t-60 111q0 26 8.5 48t29.5 41.5 39.5 33 56 31 60.5 27 70 27.5q53 20 81 31.5t76 35 75.5 42.5 62 50 53 63.5 31.5 76.5 13 94z">
+                        </path>
+                    </svg>
+                </span>
+                <p class="title-text">
+                    Your Points
+                </p>
+                <p class="percent">
+                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1792 1792" fill="currentColor" height="20" width="20">
+                        <path d="M1408 1216q0 26-19 45t-45 19h-896q-26 0-45-19t-19-45 19-45l448-448q19-19 45-19t45 19l448 448q19 19 19 45z">
+                        </path>
+                    </svg> 20%
+                </p>
+            </div>
+            <div class="data">
+                <!-- Ajoutez vos points ici -->
+                <p>{{ totalCarpoolings }}</p>
+
+                <div class="range">
+                    <div class="fill">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+
+
+        <div class="col-lg-9 col-md-8 col-12">
+          <div class="main-content">
+            <!-- Start Profile Settings Area -->
+            <div class="dashboard-block mt-0 profile-settings-block">
+              <h3 class="block-title">Profile Settings</h3>
+                  <!-- notificationss -->
+
+
+      <!-- Affichage des notifications (s'affiche si showNotifications est vrai) -->
+      <div *ngIf="showNotifications">
+                  <div *ngFor="let notification of notifications">
+                    <div class="notification-item">
+                      <!-- Icône de notification -->
+                      <i class="fas fa-bell notification-icon"></i>
+                      <div *ngIf="notification.userDestiner.username === loggedInUser">
+                        <h5>De :</h5>
+                        <h4>{{ notification.userEnvoyer.username }}</h4>
+                        <p>{{ notification.message }}</p>
+                        <p>{{ notification.timestamp }}</p>
+                        <h5>Envoyée à :</h5>
+                        <h4>{{ notification.userDestiner.username }}</h4>
+                        <hr>
+                        <div *ngIf="!notification.acceptee && !notification.refusee ">
+                          <!-- Boutons pour accepter ou refuser le covoiturage -->
+                          <button (click)="accepterCovoiturage(notification.defi.id, notification.userEnvoyer.id)" type="button" class="btn btn-success">Accepter le covoiturage</button>
+                          <button (click)="refuserCovoiturage(notification.defi.id, notification.userEnvoyer.id)" type="button" class="btn btn-danger">Refuser le covoiturage</button>
+                        </div>
+                      </div>
+                      <div *ngIf="notification.acceptee && !notification.refusee">
+                        <!-- Bouton pour annuler l'acceptation du covoiturage -->
+                        <button (click)="annulerAcceptationCovoiturage(notification.defi.id, notification.userDestiner.id)" type="button" class="btn btn-success">Annuler le covoiturage</button>
+                      </div>
+                    </div>
+                  </div>
+                    <hr>
+
+                </div>
+              <div class="inner-block">
+                <div class="image">
+                  <img src="assets/images/dashboard/user-image.jpg" alt="#" />
+                </div>
+                <form class="profile-setting-form" method="post" action="#">
+                  <div class="row">
+                    <div class="col-lg-6 col-12">
+                      <div class="form-group">
+                        <label>First Name*</label>
+                        <input
+                          name="first-name"
+                          type="text"
+                          placeholder="Steve"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-12">
+                      <div class="form-group">
+                        <label>Last Name*</label>
+                        <input
+                          name="last-name"
+                          type="text"
+                          placeholder="Aldridge"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-12">
+                      <div class="form-group">
+                        <label>Username*</label>
+                        <input
+                          name="usernames"
+                          type="text"
+                          placeholder="@username"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-12">
+                      <div class="form-group">
+                        <label>Email Address*</label>
+                        <input
+                          name="email"
+                          type="email"
+                          placeholder="username@gmail.com"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-group upload-image">
+                        <label>Profile Image*</label>
+                        <input
+                          name="profile-image"
+                          type="file"
+                          placeholder="Upload Image"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-group message">
+                        <label>About You*</label>
+                        <textarea
+                          name="message"
+                          placeholder="Enter about yourself"
+                        ></textarea>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-group button mb-0">
+                        <button type="submit" class="btn">Update Profile</button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <!-- End Profile Settings Area -->
+            <!-- Start Password Change Area -->
+            <div class="dashboard-block password-change-block">
+              <h3 class="block-title">Change Password</h3>
+              <div class="inner-block">
+                <form class="default-form-style" method="post" action="#">
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="form-group">
+                        <label>Current Password*</label>
+                        <input
+                          name="current-password"
+                          type="password"
+                          placeholder="Enter old password"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-group">
+                        <label>New Password*</label>
+                        <input
+                          name="new-password"
+                          type="password"
+                          placeholder="Enter new password"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-group">
+                        <label>Retype Password*</label>
+                        <input
+                          name="retype-password"
+                          type="password"
+                          placeholder="Retype password"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-group button mb-0">
+                        <button type="submit" class="btn">Update Password</button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!-- End Password Change Area -->
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </section>
+  <!-- End Dashboard Section -->
+
+  <!-- Start Newsletter Area -->
+  <div class="newsletter section">
+    <div class="container">
+      <div class="inner-content">
+        <div class="row align-items-center">
+          <div class="col-lg-6 col-md-6 col-12">
+            <div class="title">
+              <i class="lni lni-alarm"></i>
+              <h2>Newsletter</h2>
+              <p>We don't send spam so don't worry.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-md-6 col-12">
+            <div class="form">
+              <form
+                action="#"
+                method="get"
+                target="_blank"
+                class="newsletter-form"
+              >
+                <input
+                  name="EMAIL"
+                  placeholder="Your email address"
+                  type="email"
+                />
+                <div class="button">
+                  <button class="btn">
+                    Subscribe<span class="dir-part"></span>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

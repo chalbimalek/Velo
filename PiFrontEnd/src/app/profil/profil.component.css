@@ -1,0 +1,174 @@
+.notification-icon {
+    background-color: #ff5733; /* Couleur de fond du bouton */
+    border: none; /* Supprimez les bordures */
+    border-radius: 50%; /* Rendez le bouton rond */
+    padding: 10px; /* Ajoutez de l'espace à l'intérieur du bouton */
+  }
+  
+  .notification-icon-inner {
+    font-size: 24px; /* Taille de l'icône */
+    color: white; /* Couleur de l'icône */
+  }
+  /* Styles pour le conteneur de notification */
+.notification-container {
+    position: absolute;
+    top: 50px; /* Ajustez la position verticale selon vos besoins */
+    right: 20px; /* Ajustez la position horizontale selon vos besoins */
+    background-color: #fff; /* Couleur de fond du conteneur */
+    border: 1px solid #ccc; /* Bordure */
+    border-radius: 5px; /* Coins arrondis */
+    padding: 10px; /* Espacement intérieur */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Ombre */
+    visibility: hidden; /* Cachez initialement le conteneur */
+    opacity: 0; /* Définissez l'opacité à 0 pour utiliser une transition */
+    transition: visibility 0s, opacity 0.5s ease; /* Transition de l'opacité */
+  }
+  
+  /* Styles pour les éléments de notification */
+  .notification-item {
+    margin-bottom: 10px; /* Espacement entre les notifications */
+  }
+  
+  /* Animation pour afficher les notifications */
+  .notification-container.show {
+    visibility: visible;
+    opacity: 1;
+  }
+  .dialog-content {
+    text-align: center; /* Centrer le contenu horizontalement */
+  }
+  
+  .dialog-title {
+    font-size: 24px; /* Taille de police */
+    color: #333; /* Couleur du texte */
+    margin-bottom: 20px; /* Espace en bas */
+  }
+  .yellow-icon {
+    color: rgb(206, 64, 7);
+  }
+  .card {
+    --primary-clr: #1C204B;
+    --dot-clr: #BBC0FF;
+    --play: hsl(195, 74%, 62%);
+    width: 200px;
+    height: 170px;
+    border-radius: 10px;
+   }
+   
+   .card {
+    font-family: "Arial";
+    color: #fff;
+    display: grid;
+    cursor: pointer;
+    grid-template-rows: 50px 1fr;
+   }
+   
+   .card:hover .img-section {
+    transform: translateY(1em);
+   }
+   
+   .card-desc {
+    border-radius: 10px;
+    padding: 15px;
+    position: relative;
+    top: -10px;
+    display: grid;
+    gap: 10px;
+    background: var(--primary-clr);
+   }
+   
+   .card-time {
+    font-size: 1.7em;
+    font-weight: 500;
+   }
+   
+   .img-section {
+    transition: 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background: hsl(195, 74%, 62%);
+   }
+   
+   .card {
+    padding: 1rem;
+    background-color: #fff;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    max-width: 320px;
+    border-radius: 20px;
+  }
+  
+  .title {
+    display: flex;
+    align-items: center;
+  }
+  
+  .title span {
+    position: relative;
+    padding: 0.5rem;
+    background-color: #10B981;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 9999px;
+  }
+  
+  .title span svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ffffff;
+    height: 1rem;
+  }
+  
+  .title-text {
+    margin-left: 0.5rem;
+    color: #374151;
+    font-size: 18px;
+  }
+  
+  .percent {
+    margin-left: 0.5rem;
+    color: #02972f;
+    font-weight: 600;
+    display: flex;
+  }
+  
+  .data {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  
+  .data p {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    color: #1F2937;
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    font-weight: 700;
+    text-align: left;
+  }
+  
+  .data .range {
+    position: relative;
+    background-color: #E5E7EB;
+    width: 100%;
+    height: 0.5rem;
+    border-radius: 0.25rem;
+  }
+  
+  .data .range .fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #10B981;
+    width: 76%;
+    height: 100%;
+    border-radius: 0.25rem;
+  }
+  .center-container {
+  display: flex; /* Utilisation de flexbox */
+  justify-content: center; /* Centre horizontalement */
+  align-items: center; /* Centre verticalement */
+  height: 10vh; /* Hauteur égale à la hauteur de la fenêtre */
+}

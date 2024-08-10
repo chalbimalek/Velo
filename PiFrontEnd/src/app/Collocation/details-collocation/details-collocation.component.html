@@ -1,0 +1,55 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-6">
+
+            <div class="card image-container p-3">
+                <img [src]="product.imageModels[selectProductIndex].url"  style="width: 80%; height: 100%; margin: auto;" alt="">
+            </div>
+            <div class="mt-2">
+                <mat-grid-list cols="3" gutterSize="10" rowHeight="1:1">
+                    <mat-grid-tile *ngFor="let file of product.imageModels; let i = index" (click)="changeIndex(i)" style="border: 1px solid lightgrey; cursor: pointer;" 
+                    >
+                        <img [src]="file.url" style="height: 150px;" alt="">                    
+                    </mat-grid-tile>
+                </mat-grid-list>
+
+            </div>
+            
+
+        </div>
+        <div class="col-6">
+  <mat-card class="product-card">
+    <mat-card-content>
+
+      <div class="mt-3">
+        <h2>{{product.name}}</h2>
+      </div>
+      <div class="mt-3">
+        <h4>Lieu  :{{product.lieux}}</h4>
+      </div>
+      <div class="mt-3">
+        Description: <br>
+        {{product.description}}
+      </div>
+
+      <div class="mt-3">
+        <b style="color: blueviolet;">Rs. {{product.price}} dt</b> &nbsp;
+      </div>
+      <p class="location">
+        <i class="lni lni-map-marker"></i><a href="javascript:void(0)">{{product.adresse}} </a>
+      </p>
+      <h3 class="title">
+        <p> nbrPlaceDisponible :{{ product.nbrPlaceDisponible }}</p>
+    </h3>
+      <hr>
+      <button mat-raised-button color="accent">Call me : Num +216 {{product.numero}}</button>
+      <hr>
+      <div class="mt-2" class="button-container">
+        <button type="button"  class="btn btn-success" >Reserver</button>
+     </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+
+</div>

@@ -1,0 +1,28 @@
+<div class="mat-dialog-content text-center" style="max-height: 300px; overflow-y: auto; flex-direction: column-reverse;">
+
+<div *ngFor="let notification of data.notifications.reverse()">
+    <div class="notification-item">
+      <!-- Icône de notification -->
+      <i class="fas fa-bell notification-icon"></i>
+      <div *ngIf="notification.userDestiner.username === loggedInUser">
+        <h5>De :</h5>
+        <h4>{{ notification.userEnvoyer.username }}</h4>
+        <p>{{ notification.message }}</p>
+        <p>{{ notification.timestamp }}</p>
+        <h5>Envoyée à :</h5>
+        <h4>{{ notification.userDestiner.username }}</h4>
+
+        <div *ngIf="!notification.acceptee && !notification.refusee ">
+          <!-- Boutons pour accepter ou refuser le covoiturage -->
+          <button (click)="accepterCovoiturage(notification.defi.id, notification.userEnvoyer.id)" type="button" class="btn btn-success">Accepter le covoiturage</button>
+          <button (click)="refuserCovoiturage(notification.defi.id, notification.userEnvoyer.id)" type="button" class="btn btn-danger">Refuser le covoiturage</button>
+        </div>
+      </div>
+      <div *ngIf="notification.acceptee && !notification.refusee">
+        <!-- Bouton pour annuler l'acceptation du covoiturage -->
+        <button (click)="annulerAcceptationCovoiturage(notification.defi.id, notification.userDestiner.id)" type="button" class="btn btn-success">Annuler le covoiturage</button>
+      </div>
+      <hr>
+    </div>
+  </div>
+</div>

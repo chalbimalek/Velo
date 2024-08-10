@@ -1,0 +1,86 @@
+<table mat-table [dataSource]="productDetails" class="mat-elevation-z8">  
+    <!-- Position Column -->
+    <ng-container matColumnDef="idProduct">
+      <th mat-header-cell *matHeaderCellDef> idProduct. </th>
+      <td mat-cell *matCellDef="let element"> {{element.idProduct}} </td>
+    </ng-container>
+   
+    <!-- Name Column -->
+    <ng-container matColumnDef="Name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="brand">
+      <th mat-header-cell *matHeaderCellDef> brand </th>
+      <td mat-cell *matCellDef="let element"> {{element.brand}} </td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef> description </th>
+      <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="images">
+        <th mat-header-cell *matHeaderCellDef> images </th>
+        <td mat-cell *matCellDef="let element"> 
+            <button mat-icon-button color="primary" (click)="showImages(element)">
+                <mat-icon> images </mat-icon>
+              </button>    
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef> edit </th>
+        <td mat-cell *matCellDef="let element"> 
+            <button mat-icon-button color="warn" (click)="editProduct(element.idProduct)">
+                <mat-icon> edit </mat-icon>
+              </button> 
+        </td>
+      </ng-container>
+
+    <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef> delete </th>
+        <td mat-cell *matCellDef="let element"> 
+            <button mat-icon-button color="warn" (click)="deleteProduct(element.idProduct)">
+                <mat-icon> delete </mat-icon>
+              </button> 
+        </td>
+      </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
+  <div class="container">
+    <div *ngFor="let categorie of statistiques" class="categorie">
+      <div>{{ categorie.nom }}:</div>
+      <div class="etoiles">
+        <span *ngFor="let etoile of categorie.nombreEtoiles" class="etoile"></span>
+      </div>
+    </div>
+  </div>
+  
+
+<!--<div >
+    <p>La catégorie la plus achetée est : "{{ mostPurchasedCategory }}"</p>
+  </div>
+  <div>
+    <h1>Statistiques de la catégorie la plus achetée</h1>
+    <div>
+      <canvas #chartCanvas></canvas>
+    </div>
+    <button type="button" class="btn btn-info" (click)="generatePdfButtonClicked()">Télécharger en PDF</button>
+    &nbsp;&nbsp;&nbsp;
+
+    <button class="btn btn-info btn-round  btn-lg"style="margin-right: 3px" (click)="add()">add</button>
+    &nbsp;&nbsp;&nbsp;
+
+  <button class="btn btn-info btn-round  btn-lg"style="margin-right: 3px" routerLink="/">home</button>
+  </div>
+ --> 
+  
+
+  
+  

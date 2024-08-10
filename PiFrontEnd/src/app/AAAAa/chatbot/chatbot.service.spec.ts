@@ -1,0 +1,126 @@
+import { TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+
+import { Observable } from 'rxjs';
+import { of } from 'rxjs';
+
+import { ChatbotService } from './chatbot.service';
+import {
+  ChatbotMessage,
+  ChatbotConversation,
+} from './chatbot.types';
+
+const mockData: ChatbotMessage = {
+  message: 'Hello',
+  type: 'text',
+};
+
+const mockError = {
+  status: '401',
+  statusText: 'Unauthorized',
+  error: {
+    title: 'Please login first!'
+  }
+};
+
+const mockResponse1 = {
+  data: [{
+    message: 'Hello from chatbot',
+    type: 'text',
+  }],
+};
+
+const mockResponse2 = {
+  data: [{
+    message: 'Hello again from chatbot',
+    type: 'text',
+  }],
+  quickReplies: [
+    {
+      action: 'some reply',
+      text: 'some text',
+    }
+  ]
+};
+
+const mockResponse3 = {
+  data: [{
+    message: 'Hello again from chatbot',
+    type: 'text',
+  }],
+  actions: [
+    {
+      action: 'some action',
+      text: 'some text',
+    }
+  ]
+};
+
+describe('ChatbotService', () => {
+
+  let chatbotService: ChatbotService;
+  let httpMock: HttpTestingController;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [
+        HttpClientTestingModule
+      ],
+      providers: [
+        ChatbotService
+      ]
+    });
+    chatbotService = TestBed.get(ChatbotService);
+    httpMock = TestBed.get(HttpTestingController);
+  });
+/*
+  it('should get response via http request', (done) => {
+    chatbotService.sendMessage('/mockUrl', mockData).subscribe((result: any) => {
+      expect(result).toEqual(mockResponse1['data']);
+      expect(result.length).toEqual(1);
+      done();
+    });
+    httpMock.expectOne('/mockUrl').flush(mockResponse1);
+    httpMock.verify();
+  });
+
+  it('should reformat the data when quick replies are present', (done) => {
+    chatbotService.sendMessage('/mockUrl', mockData).subscribe((result: any) => {
+      expect(result).toEqual(mockResponse2.data); // Utiliser mockResponse2.data au lieu de mockResponse2['data']
+      expect(result.length).toEqual(2);
+      expect(result[1].type).toEqual('quickReply'); // Accès direct à result[1].type
+      expect(result[1].elements.replyText).toEqual(mockResponse2.quickReplies[0].text); // Accès correct à quickReplies[0].text
+      done();
+    });
+    httpMock.expectOne('/mockUrl').flush(mockResponse2); // Utiliser mockResponse2
+    httpMock.verify();
+  });
+  
+
+  it('should reformat the data when actions are present', (done) => {
+    chatbotService.sendMessage('/mockUrl', mockData).subscribe((result: any) => {
+      expect(result).toEqual(mockResponse3.data); // Utiliser mockResponse3.data au lieu de mockResponse3['data']
+      expect(result.length).toEqual(2);
+      expect(result[1].type).toEqual('action'); // Accès direct à result[1].type
+      expect(result[1].elements.action).toEqual(mockResponse3.actions[0].action); // Accès correct à actions[0].action
+      done();
+    });
+    httpMock.expectOne('/mockUrl').flush(mockResponse3); // Utiliser mockResponse3
+    httpMock.verify();
+  });
+  
+
+  it('should throw error', (done) => {
+    chatbotService.sendMessage('/mockErrorUrl', mockData).subscribe(
+      (result: any) => {
+      },
+      (error: any) => {
+        expect(of(error)).toBeTruthy();
+        expect(error).toBeTruthy();
+        done();
+      },
+    );
+    httpMock.expectOne('/mockErrorUrl').error(new ErrorEvent('Dummy error'));
+    httpMock.verify();
+  });*/
+});

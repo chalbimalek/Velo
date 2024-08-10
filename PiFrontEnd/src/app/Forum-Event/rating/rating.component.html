@@ -1,0 +1,14 @@
+<div class="element">
+  <div>
+    <h2>Event Ratings</h2>
+    <ul>
+      <li *ngFor="let rating of ratings">{{ rating.value }}</li>
+    </ul>
+    <p>Average Rating: {{ averageRating }}</p>
+    <p>Current Rating: {{ currentRating }}</p>
+    <hr>
+    <label for="ratingInput">Your Rating:</label>
+    <input type="number" id="ratingInput" [(ngModel)]="ratingValue">
+    <button (click)="addRating()">Add Rating</button>
+  </div>
+</div>

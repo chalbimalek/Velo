@@ -1,0 +1,48 @@
+
+.product-image {
+    width: 100%; /* Pour garantir que l'image occupe 100% de la largeur du conteneur */
+    height: 100%; /* Pour garantir que l'image occupe 100% de la hauteur du conteneur */
+    object-fit: cover;
+  }
+
+.pagination {
+margin-top: 40px; /* Ajustez la marge supérieure selon vos besoins pour placer la pagination en dessous de la liste */
+}
+.plus-icon {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+background-color: rgba(0, 0, 0, 0.5);
+color: #fff;
+width: 50px;
+height: 50px;
+border-radius: 50%;
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 24px;
+opacity: 0;
+transition: opacity 0.3s ease-in-out;
+}
+
+.image:hover .plus-icon {
+opacity: 1;
+}
+
+
+.button-container {
+margin-top: 10px; /* Espacement supplémentaire pour le bouton */
+}
+
+
+.image-size {
+width: 100%; /* Largeur de l'image à 100% de la largeur parente */
+height: 200px; /* Hauteur fixe de l'image */
+object-fit: cover; /* Ajuster la taille de l'image pour remplir le conteneur tout en préservant le rapport hauteur/largeur */
+}
+.selected-button {
+  background-color: violet; /* Couleur de fond du bouton sélectionné */
+  color: white; /* Couleur du texte */
+  /* Ajoutez d'autres styles CSS pour le bouton sélectionné selon vos besoins */
+}

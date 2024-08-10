@@ -1,0 +1,72 @@
+.product-information{
+    font-size: medium;
+}
+
+.image-container{
+    height: 450px;
+}
+.product-card {
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .product-card h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .product-card .mt-3 {
+    margin-top: 50px;
+  }
+  
+  .product-card .location {
+    margin-top: 20px;
+  }
+  
+  .product-card a {
+    text-decoration: none;
+  }
+  .qr-code {
+    width: 20px; /* Ajustez la largeur selon vos besoins */
+    height: 20px; /* Ajustez la hauteur selon vos besoins */
+  }
+  @media (max-width: 600px) {
+    .qr-code {
+      width: 50px; /* Réduisez la largeur selon vos besoins */
+      height: 50px; /* Réduisez la hauteur selon vos besoins */
+    }
+  }
+  .ratings-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 10px; /* Optionnel : Ajoutez de l'espace autour de la div */
+  }
+  
+  .rating {
+    margin-bottom: 10px; /* Optionnel : Ajoutez de l'espace entre chaque note */
+  }
+  
+  .stars {
+    margin-top: 5px; /* Optionnel : Ajoutez de l'espace entre le texte et les étoiles */
+  }
+  
+  .star {
+    color: gold; /* Couleur des étoiles */
+  }
+  
+  .filled {
+    color: gold; /* Couleur des étoiles remplies */
+  }
+  /* Étoile non remplie */
+.star {
+  color: gray; /* Couleur par défaut des étoiles non sélectionnées */
+  transition: color 0.3s; /* Animation de transition */
+}
+
+/* Étoile remplie */
+.star.filled {
+  color: gold; /* Couleur des étoiles sélectionnées */
+}
+
+  

@@ -1,0 +1,100 @@
+<div class="element">
+<div class="ms-auto">
+    <a
+      type="button"
+      class="btn btn-primary radius-30 mt-2 mt-lg-0"
+      [routerLink]="['/addEvent']"
+      ><i class="bx bxs-plus-square"></i>New Event</a
+    >
+  </div>
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="Rechercher..." >
+    <button class="btn btn-outline-secondary" type="button" >Rechercher</button>
+</div>
+
+<div class="table-responsive">
+
+  <table class="table table-striped table-bordered">
+    <thead class="table-light">
+      <tr>
+        <th>Topic</th>
+        <th>enddate</th>
+        <th>startdate</th>
+        <th>locationevent</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let event of events">
+        <td>{{ event.topic }}</td>
+        <td>{{ event.endDate | customDate }}</td>
+        <td>{{event.startDate | customDate}}</td>
+        <td>{{event.location_event}}</td>
+        <td><img [src]="event.fileUrl" alt="" width="70px" height="70px"></td>
+
+        <td>
+          <div class="d-flex order-actions">
+            <a type="button"
+   class="btn btn-primary radius-30 mt-2 mt-lg-0"
+   data-bs-toggle="modal"
+   data-bs-target="#exampleVerticallycenteredModal2"
+   (click)="getEvent(event)">
+   <i class="bx bxs-plus-square"></i>Delete Event
+</a>
+
+
+            <a
+              type="button"
+             
+             
+              class="btn btn-secondary radius-30 mt-2 mt-lg-0"
+              [routerLink]="['/editEvent', event.id]"
+              ><i class="bx bxs-plus-square"></i>Update Event
+            </a>
+            <a
+            type="button"
+            class="btn btn-secondary radius-30 mt-2 mt-lg-0"
+            [routerLink]="['/detailEvent', event.id]"
+            ><i class="bx bxs-plus-square"></i>File
+          </a>
+            <a
+              type="button"
+              class="btn btn-info radius-30 mt-2 mt-lg-0"
+              [routerLink]="['/detailEvent', event.id]"
+              ><i class="bx bxs-plus-square"></i>Event Details
+            </a>
+            <a
+            type="button"
+            class="btn btn-danger radius-30 mt-2 mt-lg-0"
+            (click)="retrieveFile(event.id)"
+            ><i class="bx bxs-plus-square"></i>SeeFile
+          </a>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+
+<!-- Modal Suppression -->
+<div class="modal" tabindex="-1" id="exampleVerticallycenteredModal2">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Delete Event</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form class="row g-3" [formGroup]="deleteEventForm">
+            <div><h3>Are You Sure To Delete This event</h3></div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-danger px-5" (click)="deleteEvent()">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

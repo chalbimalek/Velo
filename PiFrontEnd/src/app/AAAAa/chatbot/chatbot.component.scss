@@ -1,0 +1,109 @@
+@import '~@a-ui/core/dist/assets/styles/_quarks.scss';
+
+.o-chatbot {
+  &__content {
+    background-color: $white;
+    border: 1px solid $border-color;
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    height: 100%;
+    max-height: 100vh;
+  }
+
+  &__buttons {
+    float: right;
+  }
+
+  /**
+   * Elements
+   */
+
+  &__header {
+    align-items: center;
+    border-bottom: 1px solid $border-color;
+    display: flex;
+    justify-content: space-between;
+    min-height: $spacer * 2;
+
+    &--no-title {
+      justify-content: flex-end;
+    }
+  }
+
+  &__main {
+    flex: 1;
+    min-height: $spacer * 5;
+    overflow: auto;
+  }
+
+  &__loader {
+    display: flex;
+
+    span {
+      color: $grey;
+      font-size: 2rem;
+      margin-left: $spacer-xs / 2 * 7;
+    }
+
+    .a-avatar + span {
+      margin-left: $spacer-xs / 2;
+    }
+  }
+
+  &__footer {
+    border-top: 1px solid $border-color;
+  }
+
+  &__input {
+    margin: -1px;
+    padding-right: $spacer-lg;
+    position: relative;
+
+    button {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  }
+
+  /**
+   * Modifiers
+   */
+
+  &--pinned {
+    bottom: 0;
+    left: $spacer;
+    position: fixed;
+    right: $spacer;
+
+    .o-chatbot__content {
+      border-bottom: none;
+      height: 75vh;
+
+      @include at($screen-xs) {
+        max-height: $spacer * 20;
+      }
+    }
+
+    @include at($screen-xs) {
+      left: auto;
+      min-width: $spacer * 12;
+    }
+
+    @include to(29.9375rem) {
+      width: auto !important; // This is needed in order to override a custom defined width
+    }
+  }
+}
+
+:host ::ng-deep {
+  .a-avatar {
+    background: none;
+    flex: 0 0 auto;
+
+    + .m-message__content {
+      margin-left: $spacer-xs / 2; // 6px
+    }
+  }
+}

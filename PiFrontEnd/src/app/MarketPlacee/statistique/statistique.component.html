@@ -1,0 +1,18 @@
+<div class="container">
+    <h3>Nombre des Etoiles pour chaque Categorie</h3>
+    <div *ngFor="let categorie of categories" class="categorie">
+      <div> {{ categorie.nom }}:  {{ categorie.nombreEtoiles }} </div>
+      <div class="etoiles">
+        <span *ngFor="let _ of generateArray(categorie.nombreEtoiles)" class="etoile">&#9733;</span>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <h1>Statistiques de la catégorie la plus achetée</h1>
+    <div>
+      <canvas #chartCanvas></canvas>
+    </div>
+    <button type="button" class="btn btn-info" (click)="generatePdfButtonClicked()">Télécharger en PDF</button>
+    &nbsp;&nbsp;&nbsp;
+  </div>

@@ -1,0 +1,39 @@
+<div class="element">
+        <div class="table-responsive">
+
+    <table class="table table-striped table-bordered">
+      <thead class="table-light">
+        <tr>
+          <th>Topic</th>
+          <th>contenu</th>
+        
+        </tr>
+      </thead>
+      <tbody>
+      <tr>
+          <td>{{ post.topic }}</td>
+          <td>{{ post.contenu }}</td>
+          
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="comment-form">
+    <h3 class="comment-reply-title"><span>Leave a comment</span></h3>
+    <form action="#" method="POST">
+        <div class="row">
+            
+            <div class="col-12">
+                <div class="form-box form-group">
+                    <textarea name="#" class="form-control form-control-custom"
+                        placeholder="Your Comments"></textarea>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="button">
+                    <button type="submit" class="btn">Post Comment</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

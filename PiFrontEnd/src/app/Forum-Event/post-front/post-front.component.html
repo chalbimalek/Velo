@@ -1,0 +1,27 @@
+<div class="element">
+  <div class="ms-auto mb-3">
+    <a type="button" class="btn btn-primary radius-30 mt-2 mt-lg-0" [routerLink]="['/addpost']">
+      <i class="lni lni-plus"></i> Nouveau Post
+    </a>
+  </div>
+  
+  <!-- Liste de cartes de publications -->
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    <ng-container *ngFor="let post of posts">
+      <div class="col">
+        <mat-card class="custom-card">
+          <!-- Image plus petite -->
+          <img mat-card-image [src]="post.fileUrl" alt="Image" class="card-image">
+          <mat-card-content>
+            <!-- Titre et contenu -->
+            <mat-card-title>{{ post.topic }}</mat-card-title>
+            <mat-card-subtitle>{{ post.contenu }}</mat-card-subtitle>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </ng-container>
+  </div>
+
+  <!-- Modal Suppression -->
+  <!-- Code du modal supprimé pour utiliser Angular Material Dialog -->
+</div>

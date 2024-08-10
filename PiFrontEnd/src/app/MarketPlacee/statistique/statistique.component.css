@@ -1,0 +1,22 @@
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .categorie {
+    margin-bottom: 20px;
+  }
+  
+  .etoiles {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .etoile {
+    color: gold; /* Couleur des étoiles */
+    font-size: 24px; /* Taille des étoiles */
+    margin: 0 5px; /* Marge entre les étoiles */
+  }
+  

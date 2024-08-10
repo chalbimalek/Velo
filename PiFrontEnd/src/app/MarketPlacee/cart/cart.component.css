@@ -1,0 +1,14 @@
+table {
+    width: 100%;
+}
+
+table td th{
+    padding: 10px;
+}
+.container {
+    position: relative;
+    margin-top: 50px; 
+  }
+  .move-down {
+    margin-top: 20px; /* Ajustez cette valeur selon votre besoin */
+  }

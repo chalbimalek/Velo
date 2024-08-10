@@ -1,0 +1,41 @@
+<div class="element">
+  
+  <div class="table-responsive">
+
+    <table class="table table-striped table-bordered">
+      <thead class="table-light">
+        <tr>
+          <th>Topic</th>
+          <th>enddate</th>
+          <th>startdate</th>
+          <th>locationevent</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+      <tr>
+          <td>{{ event.topic }}</td>
+          <td>{{ event.endDate | customDate }}</td>
+          <td>{{event.startDate | customDate}}</td>
+          <td>{{event.location_event}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>Add file</h3>
+
+    <form enctype="multipart/form-data" class="mb-3">
+      <fieldset>
+        <div class="form-group">
+          <div>
+            <input class="form-control" (change)="onChangeFiles($event)" type="file" multiple
+                   aria-label="Select file(s)"/>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+    <div class="d-flex justify-content-end">
+      <a class="btn btn-falcon-primary" (click)="uploadFiles()">Upload</a>
+    </div>
+  
+  </div>
+  </div>

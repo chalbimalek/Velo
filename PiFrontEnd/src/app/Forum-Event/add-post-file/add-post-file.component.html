@@ -1,0 +1,32 @@
+
+<div class="card mb-5" *ngIf="!showForm">
+    <div class="card-body overflow-hidden p-lg-6">
+      <div class="row align-items-center">
+        <div class="col-lg-6"><img class="img-fluid" src="assets/img/icons/spot-illustrations/21.png" alt=""/></div>
+        <div class="col-lg-6 ps-lg-4 my-5 text-center text-lg-start">
+          <form enctype="multipart/form-data" class="mb-3">
+            <fieldset>
+              <div class="form-group">
+                <div>
+                  <input class="form-control" (change)="onChangeFiles($event)" type="file" multiple
+                         aria-label="Select file(s)"/>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+          <div class="d-flex justify-content-end">
+            <a class="btn btn-falcon-primary" (click)="uploadFiles()">Upload</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="fileStatus.status==='progress'" class="mb-3">
+      <div class="progress">
+        <div [style.width.%]="fileStatus.percent" class="progress-bar progress-bar-animated bg-info" role="progressbar"
+             aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+          {{ fileStatus.requestType }} {{ fileStatus.percent }}
+        </div>
+      </div>
+    </div>
+  </div>
+  

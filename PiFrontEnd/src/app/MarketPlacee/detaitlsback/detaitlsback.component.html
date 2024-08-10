@@ -1,0 +1,102 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-6">
+
+            <div class="card image-container p-3">
+                <img [src]="product.imageModels[selectProductIndex].url"  style="width: 80%; height: 100%; margin: auto;" alt="">
+            </div>
+            <div class="mt-2">
+                <mat-grid-list cols="3" gutterSize="10" rowHeight="1:1">
+                    <mat-grid-tile *ngFor="let file of product.imageModels; let i = index" (click)="changeIndex(i)" style="border: 1px solid lightgrey; cursor: pointer;" 
+                    >
+                        <img [src]="file.url" style="height: 150px;" alt="">                    
+                    </mat-grid-tile>
+                </mat-grid-list>
+
+            </div>
+            
+
+        </div>
+        <div class="col-6">
+  <mat-card class="product-card">
+    <mat-card-content>
+
+      <div class="mt-3">
+        <h2>{{product.name}}</h2>
+      </div>
+      <div class="mt-3">
+        <h4>Brand  :{{product.brand}}</h4>
+      </div>
+      <div class="mt-3">
+        Description: <br>
+        {{product.description}}
+      </div>
+
+      <div class="mt-3">
+        <b style="color: blueviolet;">Rs. {{ calculateDiscount(product.price) }} dt</b> &nbsp;
+      </div>
+      <p class="location">
+        <i class="lni lni-map-marker"></i><a href="javascript:void(0)">{{product.adresse}} </a>
+      </p>
+      <hr>
+      <p class="h5">Call me : +216 {{product.numero}}</p>
+
+      <p class="h3" style="color: red;">Date de livraison {{product.deliveryDays}} jours</p>
+
+      <hr>
+      <div class="mt-5 text-center">                        
+        &nbsp;
+        <button mat-raised-button color="warn" style="width: 200px;" (click)="addToCart(product.idProduct)">Add to Cart</button>
+    </div>
+    &nbsp;
+
+    <div class="rating">
+      <span class="star" (click)="setRating(1)" [class.filled]="rating >= 1">
+        <i class="fa fa-star"></i>
+      </span>
+      <span class="star" (click)="setRating(2)" [class.filled]="rating >= 2">
+        <i class="fa fa-star"></i>
+      </span>
+      <span class="star" (click)="setRating(3)" [class.filled]="rating >= 3">
+        <i class="fa fa-star"></i>
+      </span>
+      <span class="star" (click)="setRating(4)" [class.filled]="rating >= 4">
+        <i class="fa fa-star"></i>
+      </span>
+      <span class="star" (click)="setRating(5)" [class.filled]="rating >= 5">
+        <i class="fa fa-star"></i>
+      </span>
+      <button type="button" class="btn btn-success" (click)="submitRating(product.idProduct)">
+        <i class="bi bi-star"></i> Rate  </button>
+      </div>
+      <div class="form-floating">
+        <textarea class="form-control" placeholder="Leave a comment here" id="comment" name="comment" [(ngModel)]="comment" required minlength="2" maxlength="50" #commentField="ngModel"></textarea>
+        <div *ngIf="commentField.invalid && (commentField.dirty || commentField.touched)" style="color: #dc3545; font-size: 0.875rem; margin-top: 0.25rem;">
+            <div *ngIf="commentField.errors && commentField.errors['minlength']">Comment must be at least 2 characters long.</div>
+            <div *ngIf="commentField.errors && commentField.errors['maxlength']">Comment cannot exceed 50 characters.</div>
+        </div>
+                <label for="floatingTextarea">Comments</label>
+      </div>
+    
+    <button type="button" class="btn btn-success" (click)="submitComment(product.idProduct)">
+<i class="bi bi-chat-dots"></i> Comment
+</button>
+
+
+    
+ 
+    
+    </mat-card-content>
+  </mat-card>
+ 
+  <button mat-raised-button color="primary" (click)="openQRDialog()">QR Code</button>
+
+  <button mat-raised-button color="success" (click)="openCommentDialog()">List of Comments</button>
+
+  
+</div>
+<!-- chatbot.component.html -->
+<div id="df-root"></div>
+
+
+</div>

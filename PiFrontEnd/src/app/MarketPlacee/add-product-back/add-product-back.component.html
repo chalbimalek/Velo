@@ -1,0 +1,107 @@
+<button class="btn btn-info btn-round  btn-lg" type="submit" (click)="showproduct()" >   show   </button>
+<div class="col-xl-6">
+    <div class="card-body p-md-5 text-black">
+      <h3 class="mb-4 text-uppercase">Add </h3>
+<form #productForm="ngForm"  enctype="multipart/form-data" (ngSubmit)="onSubmit(productForm)">
+<div class="row">
+
+<div class="form-outline mb-4">
+<label class="form-label" for="form3Example1m"> Name</label>
+<input class="form-control " type="text" id="form3Example1m" name="name" [(ngModel)]="product.name" required minlength="3" maxlength="20" #name="ngModel">
+<div *ngIf="name.invalid && (name.dirty || name.touched)" style="color: #dc3545; font-size: 0.875rem; margin-top: 0.25rem;">
+    <div *ngIf="name.errors && name.errors['required']">Name is required.</div>
+    <div *ngIf="name.errors && name.errors['minlength']">Name must be at least 3 characters long.</div>
+    <div *ngIf="name.errors && name.errors['maxlength']">Name cannot exceed 20 characters.</div>
+  </div>
+
+</div>
+</div>
+<div class="row">
+<div class="form-outline mb-4">
+<label class="form-label" for="form3Example82"> Description</label>
+<textarea class="form-control" id="form3Example82" name="description"  [(ngModel)]="product.description" required minlength="10" maxlength="50" #description="ngModel"></textarea>
+<div *ngIf="description.invalid && (description.dirty || description.touched)" style="color: #dc3545; font-size: 0.875rem; margin-top: 0.25rem;">
+  <div *ngIf="description.errors && description.errors['required']">Description is required.</div>
+  <div *ngIf="description.errors && description.errors['minlength']">Description must be at least 10 characters long.</div>
+  <div *ngIf="description.errors && description.errors['maxlength']">Description cannot exceed 50 characters.</div>
+</div>
+
+</div>
+</div>
+
+<div class="form-outline mb-4">
+<label class="form-label" for="form3Example1n">brand</label>
+<input class="form-control" type="text" id="form3Example1n" name="brand"  [(ngModel)]="product.brand" required minlength="2" maxlength="20" #brand="ngModel">
+<div *ngIf="brand.invalid && (brand.dirty || brand.touched)" style="color: #dc3545; font-size: 0.875rem; margin-top: 0.25rem;">
+  <div *ngIf="brand.errors && brand.errors['required']">Brand is required.</div>
+  <div *ngIf="brand.errors && brand.errors['minlength']">Brand must be at least 2 characters long.</div>
+  <div *ngIf="brand.errors && brand.errors['maxlength']">Brand cannot exceed 20 characters.</div>
+</div>
+
+</div>
+<div class="form-outline mb-4">
+    <label class="form-label" for="form3Example1n">adresse</label>
+    <input class="form-control" type="text" id="form3Example1n" name="adresse"  [(ngModel)]="product.adresse"  required minlength="5" maxlength="20" #adresse="ngModel">
+    <div *ngIf="adresse.invalid && (adresse.dirty || adresse.touched)" style="color: #dc3545; font-size: 0.875rem; margin-top: 0.25rem;">
+      <div *ngIf="adresse.errors && adresse.errors['required']">Adresse is required.</div>
+      <div *ngIf="adresse.errors && adresse.errors['minlength']">Adresse must be at least 5 characters long.</div>
+      <div *ngIf="adresse.errors && adresse.errors['maxlength']">Adresse cannot exceed 20 characters.</div>
+    </div>
+  </div>
+  <div class="form-outline mb-4">
+    <label class="form-label" for="form3Example1n">numero</label>
+    <input class="form-control" type="text" id="form3Example1n" name="numero"  [(ngModel)]="product.numero" required pattern="[0-9]{8}" #numero="ngModel">
+    <div *ngIf="numero.invalid && (numero.dirty || numero.touched)" style="color: #dc3545; font-size: 0.875rem; margin-top: 0.25rem;">
+        <div *ngIf="numero.errors && numero.errors['required']">Numero is required.</div>
+      <div *ngIf="numero.errors && numero.errors['pattern']">Numero must be 8 digits.</div>
+    </div>
+  </div>
+  <div class="form-outline mb-4">
+    <label class="form-label" for="form3Example1n">price</label>
+    <input class="form-control" type="number" id="form3Example1n" name="price"  [(ngModel)]="product.price"required min="0" max="10000" #price="ngModel">
+    <div *ngIf="price.invalid && (price.dirty || price.touched)" style="color: #dc3545; font-size: 0.875rem; margin-top: 0.25rem;">
+      <div *ngIf="price.errors && price.errors['required']">Price is required.</div>
+      <div *ngIf="price.errors && price.errors['min']">Price cannot be negative.</div>
+      <div *ngIf="price.errors && price.errors['max']">Price cannot exceed 10,000 dt</div>
+    </div>
+  </div>
+<div class="row">
+<div class="form-outline mb-4">
+<label class="mb-3" for="form3Example86" >Images</label>
+
+    <div class="dropzone" appDrag (files)="fileDropped($event)">
+        <div class="text-wrapper">
+            <div class="centered" >
+            Drag and Drop your file or 
+            <a (click)="selectfile.click()" class="browse-button">browse</a> a file
+        </div>
+    </div>
+    </div>
+
+<input class="form-control" style="display: none;" #selectfile type="file" id="form3Example86" value="select" required (change)="onFileSelectedd($event)" >
+
+<div class="mt-5">
+<div class="row">
+    <mat-grid-list cols="4" rowHeight="1:1">
+        <mat-grid-tile *ngFor="let file of product.imageModels ; let i =index;">
+                <div style="position: relative;">
+                    <span class="btn-remove-image" (click)="removeImage(i)">x</span>
+                    <img [src]="file.url" alt="100px" width="100px">
+
+                </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+
+</div>
+</div>
+
+</div>
+</div>
+<div align="end">
+<button class="btn btn-info btn-round  btn-lg" style="margin-right: 3px"type="submit" *ngIf="isnewProduct" >   Add   </button>
+<button class="btn btn-info btn-round  btn-lg"style="margin-right: 3px" type="submit" *ngIf="!isnewProduct">   edit   </button>
+</div>
+</form>
+
+</div>
+</div>

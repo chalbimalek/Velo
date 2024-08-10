@@ -1,0 +1,26 @@
+<div>
+  <form #productForm="ngForm" (ngSubmit)="onOkClick(productForm)">
+
+    <label for="inputAdresse">pointArrivee :</label>
+    <input class="form-control" type="text" id="inputAdresse" name="adresse" [(ngModel)]="carpooling.pointArrivee">
+
+    <label for="inputNumero">Numéro :</label>
+    <input class="form-control" type="text" id="inputNumero" name="numero" [(ngModel)]="carpooling.numero">
+
+    <label for="inputPointSortie">Point de sortie :</label>
+    <input class="form-control" type="text" id="inputPointSortie" name="pointSorite" [(ngModel)]="carpooling.pointSorite">
+
+    <label for="inputPrice">Price :</label>
+    <input class="form-control" type="number" id="inputPrice" name="price" [(ngModel)]="carpooling.price">
+
+    <label for="inputNbrPlace">Nombre de places disponibles :</label>
+    <input class="form-control" type="number" id="inputNbrPlace" name="nbrPlaceDisponible" [(ngModel)]="carpooling.nbrPlaceDisponible">
+    
+    <label for="inputNbrPlace">DateSortie :</label>
+    <input class="form-control" type="datetime-local" id="DateSortie" name="DateSortie" [(ngModel)]="carpooling.DateSorite">
+    <!-- Ajoutez d'autres champs de saisie en fonction de votre modèle Carpooling -->
+
+    <!-- Le bouton de soumission doit être de type "submit" pour déclencher ngSubmit -->
+    <button class="btn btn-success" type="submit">Ajouter</button>
+  </form>
+</div>

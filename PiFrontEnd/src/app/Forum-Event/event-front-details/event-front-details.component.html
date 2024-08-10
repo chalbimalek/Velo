@@ -1,0 +1,15 @@
+<div class="row" *ngIf="event"> <!-- Utilisation de *ngIf pour vérifier si event est défini -->
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{ event.topic }}</h5>
+        <p class="card-text">
+          <strong>Start Date:</strong> {{ event.startDateFormatted }} <br>
+          <strong>End Date:</strong> {{ event.endDateFormatted }} <br>
+          <strong>Location:</strong> {{ event.location_event }}
+        </p>
+        <!-- Utilisation de *ngIf pour afficher l'image si fileUrl est défini -->
+        <img *ngIf="fileUrl" [src]="fileUrl" alt="Event Image" style="max-width: 100%;">
+      </div>
+    </div>
+  </div>
+  

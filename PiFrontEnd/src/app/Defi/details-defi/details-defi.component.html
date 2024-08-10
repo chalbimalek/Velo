@@ -1,0 +1,45 @@
+<div class="container-fluid">
+  <div class="row justify-content-center align-items-center" style="height: 100vh;">
+    <div class="col-lg-5"> <!-- Colonne pour l'image de la voiture -->
+      <img src="https://cdn.pixabay.com/photo/2021/09/07/11/53/car-6603726_640.jpg" alt="Image de voiture" class="img-fluid img">
+    </div>
+    <div class="col-lg-4"> <!-- Colonne pour les détails du produit -->
+      <mat-card class="product-card">
+        <mat-card-content>
+          <div *ngIf="product">
+
+            <div class="mt-3">
+              <h2>{{product.name}}</h2>
+            </div>
+            <div class="mt-3">
+
+              <h2> Point de Sorite: {{product.pointSorite}}</h2>
+            </div>
+
+            <div class="mt-3">
+              <h1 style="color: blueviolet;">Rs:   {{product.price}} dt</h1> &nbsp;
+            </div>
+            <p class="location">
+              <i class="lni lni-map-marker"></i> <a href="javascript:void(0)"><h2> Destination : {{product.pointArrivee}}</h2> </a>
+            </p>
+            <h3 class="title">
+              <p><b> Date : </b>{{ product.DateSorite }}</p>
+            </h3>
+            <hr>
+            <button mat-raised-button color="accent">Call me : Num +216 {{product.numero}}</button>
+            <hr>
+            <div class="mt-2" class="button-container">
+              <button (click)="reserverCovoiturage(product.id)" type="button" class="btn btn-success">Reserver</button>
+            </div>
+
+          </div>
+
+        </mat-card-content>
+        <canvas #qrcode width="200" height="200"></canvas>
+
+      </mat-card>
+
+    </div>
+    <div class="col-lg-3"></div> <!-- Colonne vide pour l'espace -->
+  </div>
+</div>

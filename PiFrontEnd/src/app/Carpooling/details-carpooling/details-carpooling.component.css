@@ -1,0 +1,42 @@
+.product-information{
+    font-size: medium;
+}
+
+.image-container{
+    height: 450px;
+}
+.img {
+  width: 800px;
+}
+
+.product-card {
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .product-card h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .product-card .mt-3 {
+    margin-top: 50px;
+  }
+  
+  .product-card .location {
+    margin-top: 20px;
+  }
+  
+  .product-card a {
+    text-decoration: none;
+  }
+  .qr-code {
+    width: 20px; /* Ajustez la largeur selon vos besoins */
+    height: 20px; /* Ajustez la hauteur selon vos besoins */
+  }
+  @media (max-width: 600px) {
+    .qr-code {
+      width: 50px; /* Réduisez la largeur selon vos besoins */
+      height: 50px; /* Réduisez la hauteur selon vos besoins */
+    }
+  }

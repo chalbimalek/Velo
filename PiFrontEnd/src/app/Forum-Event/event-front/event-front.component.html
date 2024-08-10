@@ -1,0 +1,40 @@
+<!-- Search Bar -->
+<div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="Rechercher...">
+    <button class="btn btn-outline-secondary" type="button">Rechercher</button>
+  </div>
+  
+  <!-- Event Cards -->
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-4 mb-4" *ngFor="let event of events">
+      <div class="card">
+        <!-- Event Image -->
+  
+        <!-- Card Body -->
+        <div class="card-body">
+          <!-- Event Topic -->
+          <h5 class="card-title">{{ event.topic }}</h5>
+  
+          <!-- Event Start and End Date -->
+          <p class="card-text">
+            <strong>Start Date:</strong> {{ formatDate(event.startDate) }} <br>
+            <strong>End Date:</strong> {{ formatDate(event.endDate) }}
+          </p>
+  
+          <!-- Event Location -->
+          <p class="card-text"><strong>Location:</strong> {{ event.location_event }}</p>
+        </div>
+  
+        <!-- Card Footer - Actions -->
+        <div class="card-footer d-flex justify-content-between align-items-center">
+          <!-- Delete Event Button (with modal trigger) -->
+     
+          
+  
+          <!-- No "See File" Button, display image instead -->
+          <img (click)="navigateToEventDetail(event.id)" [src]="event.fileUrl" alt="Event Image" style="max-width: 100%;">
+        </div>
+      </div>
+    </div>
+  </div>
+  

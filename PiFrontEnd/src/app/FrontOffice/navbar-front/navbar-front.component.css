@@ -1,0 +1,42 @@
+.notification-icon {
+    background-color: #ff5733; /* Couleur de fond du bouton */
+    border: none; /* Supprimez les bordures */
+    border-radius: 50%; /* Rendez le bouton rond */
+    padding: 10px; /* Ajoutez de l'espace à l'intérieur du bouton */
+  }
+  
+  .notification-icon-inner {
+    font-size: 24px; /* Taille de l'icône */
+    color: white; /* Couleur de l'icône */
+  }
+  /* Styles pour le conteneur de notification */
+  .notification-container {
+    position: fixed;
+    top: 50px; /* Position verticale par rapport au haut de la page */
+    right: 20px; /* Position horizontale par rapport à droite de la page */
+    width: 300px; /* Largeur du conteneur */
+    max-height: 400px; /* Hauteur maximale pour permettre le défilement */
+    overflow-y: auto; /* Ajoute une barre de défilement verticale si nécessaire */
+    background-color: white; /* Couleur de fond */
+    border: 1px solid #ccc; /* Bordure */
+    border-radius: 5px; /* Coins arrondis */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombre pour effet de profondeur */
+    z-index: 999; /* Assurez-vous que le conteneur s'affiche au-dessus des autres éléments */
+    padding: 10px; /* Espacement intérieur */
+}
+
+.notification-list {
+    padding: 0;
+    margin: 0;
+}
+
+.notification-item {
+    margin-bottom: 10px; /* Espacement entre chaque notification */
+}
+
+  /* Animation pour afficher les notifications */
+  .notification-container.show {
+    visibility: visible;
+    opacity: 1;
+  }
+  

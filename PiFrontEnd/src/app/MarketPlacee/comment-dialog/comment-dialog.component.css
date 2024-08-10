@@ -1,0 +1,28 @@
+/* Assurez-vous que l'élément parent de .ratings-container est positionné */
+.dialog-content {
+    text-align: center; /* Centrer le contenu horizontalement */
+  }
+  
+  .dialog-title {
+    font-size: 24px; /* Taille de police */
+    color: #333; /* Couleur du texte */
+    margin-bottom: 20px; /* Espace en bas */
+  }
+  
+  /* Autres styles */
+  .rating {
+    margin-bottom: 10px; /* Optionnel : Ajoutez de l'espace entre chaque note */
+  }
+  
+  .stars {
+    margin-top: 5px; /* Optionnel : Ajoutez de l'espace entre le texte et les étoiles */
+  }
+  
+  .star {
+    color: gold; /* Couleur des étoiles */
+  }
+  
+  .filled {
+    color: gold; /* Couleur des étoiles remplies */
+  }
+  

@@ -1,0 +1,132 @@
+<div class="text-center">
+    <h4 class="modal-title text-primary">Update Event</h4>
+  </div>
+  
+  <div>
+    <form class="row g-3" [formGroup]="editEventForm">
+      <div class="col-md-12">
+        <label for="inputLastName1" class="form-label">Topic</label>
+        <div class="input-group">
+          <span class="input-group-text bg-transparent">
+            <i class="bx bxs-user"></i>
+          </span>
+          <input
+            formControlName="topic"
+            type="text"
+            
+            class="form-control border-start-0"
+            id="inputLastName1"
+          />
+        </div>
+        <!-- Affichage du message d'erreur pour le champ "Topic" -->
+        <div
+          class="alert alert-danger"
+          *ngIf="
+            editEventForm.get('topic')?.hasError('required') &&
+            editEventForm.get('topic')?.touched
+          "
+        >
+          Topic is required.
+        </div>
+      
+      </div>
+
+      <div class="col-md-12">
+        <label for="inputLastName2" class="form-label">End Date</label>
+        <div class="input-group">
+            <span class="input-group-text bg-transparent">
+                <i class="bx bxs-user"></i>
+            </span>
+            <input
+                formControlName="endDate"
+                type="date"
+                class="form-control border-start-0"
+                id="inputLastName2"
+            />
+        </div>
+        <!-- Affichage du message d'erreur pour le champ "contenu" -->
+        <div
+            class="alert alert-danger"
+            *ngIf="
+                editEventForm.get('endDate')?.hasError('required') &&
+                editEventForm.get('endDate')?.touched
+            "
+        >
+            End Date is required.
+        </div>
+    </div>
+    
+
+      <div class="col-md-12">
+        <label for="inputLastName3" class="form-label">Start Date</label>
+        <div class="input-group">
+          <span class="input-group-text bg-transparent">
+            <i class="bx bxs-user"></i>
+          </span>
+          <input
+            formControlName="startDate"
+            type="date"
+            class="form-control border-start-0"
+            id="inputLastName3"
+          />
+        </div>
+        <!-- Affichage du message d'erreur pour le champ "contenu" -->
+        <div
+          class="alert alert-danger"
+          *ngIf="
+            editEventForm.get('startDate')?.hasError('required') &&
+            editEventForm.get('startDate')?.touched
+          "
+        >
+        Start Date is required.
+        </div>
+      
+      </div>
+  
+      <div class="col-md-12">
+        <label for="inputLastName4" class="form-label">Location Event</label>
+        <div class="input-group">
+          <span class="input-group-text bg-transparent">
+            <i class="bx bxs-user"></i>
+          </span>
+          <input
+            formControlName="location_event"
+            type="text"
+            class="form-control border-start-0"
+            id="inputLastName4"
+          />
+        </div>
+        <!-- Affichage du message d'erreur pour le champ "Topic" -->
+        <div
+          class="alert alert-danger"
+          *ngIf="
+            editEventForm.get('location_event')?.hasError('required') &&
+            editEventForm.get('location_event')?.touched
+          "
+        >
+        Location Event is required.
+        </div>
+      
+      </div>
+     
+  
+      
+    
+        
+        <div class="d-flex justify-content-center">
+            <button
+              type="submit"
+              class="btn btn-danger px-5"
+              (click)="updateEvent()"
+              [disabled]="editEventForm.invalid"
+            >
+              Save
+            </button>
+          </div>
+          
+          
+      
+    </form>
+  </div>
+
+

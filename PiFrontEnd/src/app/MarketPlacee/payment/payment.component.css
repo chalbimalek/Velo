@@ -1,0 +1,10 @@
+.btn-primary {
+    font-weight: bold;
+    font-size: 24px; /* Taille du texte */
+    width: 200px; /* Largeur du bouton */
+    height: 60px; /* Hauteur du bouton */
+    text-align: center;
+    line-height: 60px; /* Ajustement de la hauteur pour centrer verticalement */
+    margin: auto; /* Centre horizontalement */
+    display: block; /* Pour permettre la marge auto */
+  }

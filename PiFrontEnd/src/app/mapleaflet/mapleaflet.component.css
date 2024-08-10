@@ -1,0 +1,79 @@
+.map-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 30px;
+    width: 1800px; /* Définir la largeur souhaitée de la carte */
+  height: 700px;
+  margin: auto; /* Utiliser des marges automatiques pour centrer */
+
+  }
+   
+  .map-frame {
+    border: 2px solid black;
+    height: 100%;
+    position: relative;
+  width: 100%;
+  }
+   
+  #map {
+    width: 100%;
+    height: 100%;
+    }
+  img{
+    content :url("/src/assets/marker-icon-2x.png")
+  }
+  .leaflet-control-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+  }
+  
+  .leaflet-control-button:hover {
+    background-color: #0056b3;
+  }
+  .popup-container {
+    background-color: #fff;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    width: 250px;
+  }
+  
+  .popup-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+  
+  .popup-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 12px;
+  }
+  
+  .popup-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .popup-button:hover {
+    background-color: #0056b3;
+  }
+  .leaflet-right{
+    display: none!important;
+}
