@@ -14,13 +14,13 @@
 
         <div *ngIf="!notification.acceptee && !notification.refusee ">
           <!-- Boutons pour accepter ou refuser le covoiturage -->
-          <button (click)="accepterCovoiturage(notification.defi.id, notification.userEnvoyer.id)" type="button" class="btn btn-success">Accepter le covoiturage</button>
-          <button (click)="refuserCovoiturage(notification.defi.id, notification.userEnvoyer.id)" type="button" class="btn btn-danger">Refuser le covoiturage</button>
+          <button (click)="accepterCovoiturage(notification.defi.id, notification.userEnvoyer.id)" type="button" class="btn btn-success">Accepter {{ notification.userEnvoyer.username }}</button>
+          <button (click)="refuserCovoiturage(notification.defi.id, notification.userEnvoyer.id)" type="button" class="btn btn-danger">Refuser {{ notification.userEnvoyer.username }}</button>
         </div>
       </div>
       <div *ngIf="notification.acceptee && !notification.refusee">
         <!-- Bouton pour annuler l'acceptation du covoiturage -->
-        <button (click)="annulerAcceptationCovoiturage(notification.defi.id, notification.userDestiner.id)" type="button" class="btn btn-success">Annuler le covoiturage</button>
+        <button (click)="annulerAcceptationCovoiturage(notification.defi.id, notification.userDestiner.id)" type="button" class="btn btn-success">Annuler le participation</button>
       </div>
       <hr>
     </div>

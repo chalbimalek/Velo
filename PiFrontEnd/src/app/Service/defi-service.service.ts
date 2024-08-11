@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { notification } from '../model/Notification';
 import { AuthService } from './auth.service';
+import { User } from '../model/User';
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +39,30 @@ export class DefiServiceService {
     return this.httpClient.post<Defi>(`${this.baseUrl}/carpooling/adddd`,Carpooling, { headers });
   }
 
+  isWinning(name: string): Observable<boolean> {
+    const token = this.authservice.getToken();
+    let headers = new HttpHeaders();
+    if (token) {
+      headers = headers.set('Authorization', `Bearer ${token}`);
+    }
+    return this.httpClient.get<boolean>(`${this.baseUrl}/carpooling/is-winning?name=${name}`, { headers });
+  }
+  calculatePoints1(): Observable<number> {
+    const token = this.authservice.getToken();
+    let headers = new HttpHeaders();
+    if (token) {
+      headers = headers.set('Authorization', `Bearer ${token}`);
+    }
+    return this.httpClient.get<number>(`${this.baseUrl}/carpooling/calculate-points`, { headers });
+  }
+  getAcceptedUsers(): Observable<string[]> {
+    const token = this.authservice.getToken();
+    let headers = new HttpHeaders();
+    if (token) {
+      headers = headers.set('Authorization', `Bearer ${token}`);
+    }
+    return this.httpClient.get<string[]>(`${this.baseUrl}/carpooling/accepted-users`, { headers });
+  }
   reserverCovoiturage(id: number): Observable<string> {
     const token = this.authservice.getToken();
     let headers = new HttpHeaders();

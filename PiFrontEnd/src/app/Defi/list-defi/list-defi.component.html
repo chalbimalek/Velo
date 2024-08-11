@@ -21,13 +21,13 @@
           <div class="row align-items-center">
               <div class="col-lg-6 col-md-6 col-12">
                   <div class="breadcrumbs-content">
-                      <h1 class="page-title">Category</h1>
+                      <h1 class="page-title">Defi</h1>
                   </div>
               </div>
               <div class="col-lg-6 col-md-6 col-12">
                   <ul class="breadcrumb-nav">
                       <li><a href="index.html">Home</a></li>
-                      <li>category</li>
+                      <li>Defi</li>
                   </ul>
               </div>
           </div>
@@ -105,17 +105,12 @@
                       <!-- End Single Widget -->
                       <!-- Start Single Widget -->
                       <div class="single-widget range">
-                          <h3>Price Range</h3>
-                          <input type="range" class="form-range" name="range" step="1" min="100" max="10000" value="100"
-                              (input)="updatePriceRange($event)" />
-                          <div class="range-inner">
-                              <label>$</label>
-                              <input type="text" id="rangePrimary" placeholder="100" />
-                          </div>
+                        <button mat-button (click)="openAcceptedUsersDialog()">View Accepted Users</button>
+
                       </div>
 
                       <!-- End Single Widget -->
-                      <!-- Start Single Widget -->
+                      <!-- Start Single Widget
                       <div class="single-widget condition">
                           <h3>Condition</h3>
                           <div class="form-check">
@@ -136,7 +131,7 @@
                                   Used
                               </label>
                           </div>
-                      </div>
+                      </div> -->
                       <!-- End Single Widget -->
                       <!-- Start Single Widget -->
                       <div class="single-widget banner">
@@ -148,6 +143,7 @@
                       <!-- End Single Widget -->
                   </div>
               </div>
+
               <div class="col-lg-9 col-md-8 col-12">
                   <div class="category-grid-list">
                       <div class="row">
@@ -157,6 +153,7 @@
                                       <div class="col-lg-6 col-md-6 col-12">
                                           <h3 class="title">All Defi</h3>
                                       </div>
+
                                       <div class="col-lg-6 col-md-6 col-12">
                                           <nav>
                                               <div class="nav nav-tabs" id="nav-tab" role="tablist">

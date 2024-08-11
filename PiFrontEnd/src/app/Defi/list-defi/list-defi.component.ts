@@ -7,6 +7,8 @@ import { DefiServiceService } from 'src/app/Service/defi-service.service';
 import { DefiProcessingService } from '../ImageDefi/defi-processing.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { map } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { AcceptedUsersDialogComponent } from '../accepted-users-dialog/accepted-users-dialog.component';
 
 @Component({
   selector: 'app-list-defi',
@@ -14,11 +16,20 @@ import { map } from 'rxjs';
   styleUrls: ['./list-defi.component.css']
 })
 export class ListDefiComponent implements OnInit {
+  openAcceptedUsersDialog(): void {
+    const dialogRef = this.dialog.open(AcceptedUsersDialogComponent, {
+      width: '400px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
   p:number=1;
     searchTerm: string='' ;
     public productDetails: Defi[] = [];
 
-    constructor(private authService: AuthService,private router : Router,private productservice:DefiServiceService,private sanitizer:DomSanitizer,private imageProcessingService:DefiProcessingService){}
+    constructor(public dialog: MatDialog,private authService: AuthService,private router : Router,private productservice:DefiServiceService,private sanitizer:DomSanitizer,private imageProcessingService:DefiProcessingService){}
     ngOnInit(): void {
       //this.getAllCarpooling();
       this.getAllCarpooling1();

@@ -59,6 +59,7 @@ public class User {
     private Boolean enabled;
     private Boolean accountVerified;
     private Boolean emailVerified;
+    int points;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private Date birthDate;
 

@@ -1,0 +1,17 @@
+<div *ngIf="acceptedUsers.length > 0; else noUsers">
+  <h3>Accepted Users:</h3>
+  <ul>
+    <li *ngFor="let user of acceptedUsers">
+      {{ user }}
+      <button mat-button (click)="checkWinning(user)">
+        Check Winning
+      </button>
+      <span *ngIf="winningStatus[user] !== undefined">
+        {{ winningStatus[user] ? 'Winning' : 'Not Winning' }}
+      </span>
+    </li>
+  </ul>
+</div>
+<ng-template #noUsers>
+  <p>No users have accepted the defi yet.</p>
+</ng-template>

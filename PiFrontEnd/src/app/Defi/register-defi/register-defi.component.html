@@ -43,29 +43,11 @@
                   <!-- Start Dashboard Sidebar -->
                   <div class="dashboard-sidebar">
                       <div class="user-image">
-                          <img src="assets/images/dashboard/user-image.jpg" alt="#">
-                          <h3>Steve Aldridge
-                              <span><a href="javascript:void(0)">@username</a></span>
+                          <img src="https://cdn.pixabay.com/photo/2023/07/04/09/06/bicycle-8105731_1280.jpg" alt="#">
+                          <h3>Jihed Mathlouthi
                           </h3>
                       </div>
-                      <div class="dashboard-menu">
-                          <ul>
-                              <li><a href="dashboard.html"><i class="lni lni-dashboard"></i> Dashboard</a></li>
-                              <li><a href="profile-settings.html"><i class="lni lni-pencil-alt"></i> Edit Profile</a>
-                              </li>
-                              <li><a href="my-items.html"><i class="lni lni-bolt-alt"></i> My Ads</a></li>
-                              <li><a href="favourite-items.html"><i class="lni lni-heart"></i> Favourite ads</a></li>
-                              <li><a class="active" href="post-item.html"><i class="lni lni-circle-plus"></i> Post An
-                                      Ad</a></li>
-                              <li><a href="bookmarked-items.html"><i class="lni lni-bookmark"></i> Bookmarked</a></li>
-                              <li><a href="messages.html"><i class="lni lni-envelope"></i> Messages</a></li>
-                              <li><a href="delete-account.html"><i class="lni lni-trash"></i> Close account</a></li>
-                              <li><a href="invoice.html"><i class="lni lni-printer"></i> Invoice</a></li>
-                          </ul>
-                          <div class="button">
-                              <a class="btn" href="javascript:void(0)">Logout</a>
-                          </div>
-                      </div>
+
                   </div>
                   <!-- Start Dashboard Sidebar -->
               </div>
@@ -93,7 +75,7 @@
                                         </div>-->
                                         <div class="col-xl-6">
                                           <div class="card-body p-md-5 text-black">
-                                            <h3 class="mb-4 text-uppercase">Add </h3>
+                                            <h3 class="mb-4 text-uppercase">Add Defi</h3>
                                 <form #productForm="ngForm"  enctype="multipart/form-data" (ngSubmit)="onSubmit(productForm)">
                                   <div class="row">
 
@@ -149,21 +131,21 @@
                                             </div>
                                             <div class="form-outline mb-4">
                                               <label class="form-label" for="form3Example1n">price</label>
-                                              <input class="form-control" type="number" id="form3Example1n" name="price"  [(ngModel)]="product.price"required min="0" max="10000" #price="ngModel">
+                                              <input class="form-control" type="number" id="form3Example1n" name="price"  [(ngModel)]="product.price"required min="0" max="30" #price="ngModel">
                                               <div *ngIf="price.invalid && (price.dirty || price.touched)" style="color: #dc3545; font-size: 0.875rem; margin-top: 0.25rem;">
                                                 <div *ngIf="price.errors && price.errors['required']">Price is required.</div>
                                                 <div *ngIf="price.errors && price.errors['min']">Price cannot be negative.</div>
-                                                <div *ngIf="price.errors && price.errors['max']">Price cannot exceed 10,000 dt</div>
+                                                <div *ngIf="price.errors && price.errors['max']">Price cannot exceed 30 dt</div>
                                               </div>
                                             </div>
 
                                             <div class="form-outline mb-4">
                                               <label class="form-label" for="form3Example1n">nbrPlaceDisponible</label>
-                                              <input class="form-control" type="number" id="form3Example1n" name="nbrPlaceDisponible"  [(ngModel)]="product.nbrPlaceDisponible"required min="0" max="4" #nbrPlaceDisponible="ngModel">
+                                              <input class="form-control" type="number" id="form3Example1n" name="nbrPlaceDisponible"  [(ngModel)]="product.nbrPlaceDisponible"required min="0" max="10" #nbrPlaceDisponible="ngModel">
                                               <div *ngIf="nbrPlaceDisponible.invalid && (nbrPlaceDisponible.dirty || nbrPlaceDisponible.touched)" style="color: #dc3545; font-size: 0.875rem; margin-top: 0.25rem;">
                                                 <div *ngIf="nbrPlaceDisponible.errors && nbrPlaceDisponible.errors['required']">nbrPlaceDisponible is required.</div>
                                                 <div *ngIf="nbrPlaceDisponible.errors && nbrPlaceDisponible.errors['min']">nbrPlaceDisponible cannot be negative.</div>
-                                                <div *ngIf="nbrPlaceDisponible.errors && nbrPlaceDisponible.errors['max']">nbrPlaceDisponible cannot exceed 4 place</div>
+                                                <div *ngIf="nbrPlaceDisponible.errors && nbrPlaceDisponible.errors['max']">nbrPlaceDisponible cannot exceed 10 place</div>
                                               </div>
                                             </div>
                                  <!-- <div class="row">

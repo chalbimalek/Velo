@@ -4,6 +4,7 @@ package com.jihedMathlouthi.veloBack.Controller;
 import com.jihedMathlouthi.veloBack.Entity.Defi;
 import com.jihedMathlouthi.veloBack.Entity.ImageModel;
 import com.jihedMathlouthi.veloBack.Entity.Notification;
+import com.jihedMathlouthi.veloBack.Entity.User;
 import com.jihedMathlouthi.veloBack.ServiceImp.DefiService;
 import com.jihedMathlouthi.veloBack.ServiceImp.NotificationServiceImpl;
 import com.jihedMathlouthi.veloBack.ServiceImp.UserServiceImpl;
@@ -30,7 +31,7 @@ import java.util.Set;
 @RequestMapping("/carpooling")
 public class DefiController {
 
-    private final DefiService carpoolingService;
+    private final DefiService defiService;
     private final UserServiceImpl userService;
     private final NotificationServiceImpl notificationService;
 
@@ -42,7 +43,7 @@ public class DefiController {
         try {
                 Set<ImageModel> imageModelSet = uploadImage(file);
                 carpooling.setImageModels(imageModelSet);
-                return carpoolingService.saveCarpooling(carpooling);
+                return defiService.saveCarpooling(carpooling);
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -77,30 +78,39 @@ public class DefiController {
     }
     @GetMapping("/{pid}")
     public Defi getCarpolingById (@PathVariable int pid) {
-    return carpoolingService.getCarpolingById(pid);
+    return defiService.getCarpolingById(pid);
     }
     @GetMapping("/getall")
     public List<Defi> getAllCarpooling () {
-        return carpoolingService.getAllCarpooling();
+        return defiService.getAllCarpooling();
     }
 
     @DeleteMapping("/delete/{id}")
     public void deleteCarpooling(@PathVariable("id") int id) {
-            carpoolingService.deleteCarpooling(id);
+            defiService.deleteCarpooling(id);
     }
     @PreAuthorize("hasRole('ROLE_MEMBRE')")
     @PostMapping("/adddd")
     public Defi addCarpooling(@RequestBody Defi defi) {
-        return carpoolingService.saveCarpooling(defi);
+        return defiService.saveCarpooling(defi);
     }
+    @GetMapping("/accepted-users")
+    public Set<String> getAcceptedUsersForDefi() {
+       return defiService.getDefiUsers();
+    }
+    @PreAuthorize("hasRole('ROLE_MEMBRE')")
 
+    @GetMapping("/is-winning")
+    public boolean isWinning(@RequestParam String name) {
+        return defiService.Winning(name);
+    }
 
     @PreAuthorize("hasRole('ROLE_MEMBRE')")
 
     @PostMapping("/reserver")
     public ResponseEntity<String> reserverCovoiturage(@RequestParam Long id) {
         try {
-            carpoolingService.reserverDefi(id);
+            defiService.reserverDefi(id);
             return ResponseEntity.ok("Réservation effectuée avec succès");
         } catch (IllegalArgumentException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
@@ -113,7 +123,7 @@ public class DefiController {
     @PostMapping("/accepterOuRefuser/{carpoolingId}/{accepter}/{userId}")
     public ResponseEntity<String> accepterOuRefuserCovoiturage(@PathVariable("carpoolingId") Integer carpoolingId, @PathVariable("accepter") boolean accepter, @PathVariable("userId") Integer userId) {
         try {
-            carpoolingService.accepterOuRefuserCovoiturage(carpoolingId,userId, accepter );
+            defiService.accepterOuRefuserCovoiturage(carpoolingId,userId, accepter );
             return ResponseEntity.ok(accepter ? "Réservation acceptée" : "Réservation refusée");
         } catch (IllegalArgumentException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
@@ -127,7 +137,7 @@ public class DefiController {
     public ResponseEntity<String> annulerAcceptationCovoiturage(@PathVariable("carpoolingId") Integer carpoolingId,@PathVariable("userId") Integer userId) {
         try {
             // Appeler le service pour annuler l'acceptation du covoiturage
-            carpoolingService.annulerAcceptationCovoiturage(carpoolingId,userId);
+            defiService.annulerAcceptationCovoiturage(carpoolingId,userId);
 
             // Retourner une réponse OK avec un message approprié
             return ResponseEntity.ok("Acceptation du covoiturage annulée avec succès");
@@ -165,13 +175,12 @@ public class DefiController {
 
     @GetMapping("/gain-carpooling")
     public int calculateCarpoolingGain() {
-        return carpoolingService.nbrdecovoiturage();
+        return defiService.nbrdecovoiturage();
     }
 
-    @GetMapping("/calculatePoints")
-    public int calculatePoints() {
-        int totalCarpoolings = carpoolingService.calculatePoints();
-
-        return totalCarpoolings;
+    @GetMapping("/calculate-points")
+    public ResponseEntity<Integer> calculatePoints() {
+        int points = defiService.calculatePoints();
+        return ResponseEntity.ok(points);
     }
     }

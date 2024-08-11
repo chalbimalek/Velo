@@ -2,6 +2,8 @@
 export interface User {
     id: number;
     email: string;
+    points:number;
+    username:string;
     firstName: string;
     lastName: string;
     gender: string;

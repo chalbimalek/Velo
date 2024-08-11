@@ -15,6 +15,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -229,53 +231,101 @@ public class DefiService {
         return gain;
 
     }
-
+@Transactional
     public int calculatePoints() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
         User user = userDao.findByUsername(username).orElseThrow(() -> new IllegalStateException("Utilisateur non trouvé"));
         Set<Defi> defis = user.getAnnonceDefiSet();
-        int totalPoints = 0;
-        int totalCarpoolings = defis.size();
+        int f = user.getPoints();
+    System.out.println(f);
         int weekdayCarpoolings = 0;
 
-        // Compter le nombre de covoiturages effectués en semaine
         for (Defi defi : defis) {
-            if (defi.getStatus()) {
-                weekdayCarpoolings++;
-                System.out.println(weekdayCarpoolings);
-                totalPoints += weekdayCarpoolings * POINTS_PER_CARPPOOLING;
 
+        // Compter le nombre de covoiturages effectués en semaine
+
+            if (defi.getStatus() ) {
+                weekdayCarpoolings++;
+                System.out.println("ww "+weekdayCarpoolings);
+                user.setPoints(weekdayCarpoolings * POINTS_PER_CARPPOOLING);
+                System.out.println(" user point "+user.getPoints());
             }
         }
 
-        // Calculer les points en fonction du nombre de covoiturages en semaine
-       /* if (weekdayCarpoolings >= 5) {
-            totalPoints += 100;
-        }*/
-        System.out.println("1 " + totalCarpoolings);
-        System.out.println("2 " + totalPoints);
 
 
-        return totalPoints;
+        return user.getPoints();
     }
 
     private static final int POINTS_PER_CARPPOOLING = 10;
 
-    public boolean isWeekdayCarpooling(Defi defi) {
-        LocalDateTime departureDateTime = defi.getDateSortie();
-        DayOfWeek dayOfWeek = departureDateTime.getDayOfWeek();
-        return dayOfWeek != DayOfWeek.SATURDAY && dayOfWeek != DayOfWeek.SUNDAY;
-    }
+    private static final int NBR = 0;
 
-    public int calculatePointsPerCarpooling(int totalCarpoolings) {
-        // Votre logique pour déterminer le nombre de points par covoiturage
-        if (totalCarpoolings >= 5) {
-            System.out.println(totalCarpoolings);
-            return POINTS_PER_CARPPOOLING * 2; // Double points si le nombre de covoiturages est égal ou supérieur à 5
-        } else {
-            return POINTS_PER_CARPPOOLING;
+
+
+    public Set<String> getDefiUsers() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        User user = userDao.findByUsername(username)
+                .orElseThrow(() -> new IllegalStateException("Utilisateur non trouvé"));
+        Set<User> UserAcceptee=new HashSet<>();
+        Set<String> usernames=new HashSet<>();
+
+        List<Defi> defis =defiRepository.getDefi();
+        for (Defi defi:defis) {
+            UserAcceptee = defi.getUtilisateursAcceptes();
+            //    System.out.println("defis name :"+defi.getName());
+
+            if (defi.getUser().equals(user)) {
+                for (User user1 : UserAcceptee) {
+                    usernames.add((user1.getUsername()));
+                }
+            }
+
+            System.out.println(user.getUsername());
+
         }
+return  usernames;
+    }
+@Transactional
+        public boolean Winning (String name) {
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            String username = authentication.getName();
+            User user = userDao.findByUsername(username)
+                    .orElseThrow(() -> new IllegalStateException("Utilisateur non trouvé"));
+
+    Set<User> UserAcceptee=new HashSet<>();
+    List<Defi> defis =defiRepository.findAll();
+    for (Defi defi:defis){
+        UserAcceptee  =defi.getUtilisateursAcceptes();
+
     }
 
+    Set<String> usernames=getDefiUsers();
+    boolean b = false;
+
+        System.out.println("username  " + usernames);
+
+        for (String namee : usernames) {
+            if (namee.equals(name)  ) {
+                b = true;
+                for (User user2:UserAcceptee){
+                if (user2.getUsername().equals(namee))
+                        user2.setPoints(user2.getPoints() + POINTS_PER_CARPPOOLING);
+                    for (Defi d:defis){
+                        if (d.getUser().equals(user)){
+                            d.setStatus(true);
+                        }
+                    }
+            }
+            }
+                System.out.println("name " + namee + " f " + name);
+            System.out.println("Points  " );
+
+    }
+
+            return b;
+
+        }
 }

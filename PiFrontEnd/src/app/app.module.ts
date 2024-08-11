@@ -78,11 +78,12 @@ import { EditEventsComponent } from './Forum-Event/event/events/edit-events/edit
 import { DetailEventsComponent } from './Forum-Event/event/events/detail-event/detail-event.component';
 import { PopContentComponent } from './pop-content/pop-content.component';
 import { PostFrontComponent } from './Forum-Event/post-front/post-front.component';
-import { NotificationsDialogComponent } from './Carpooling/notifications-dialog/notifications-dialog.component';
+import { NotificationsDialogComponent } from './notifications-dialog/notifications-dialog.component';
 
 import { RegisterDefiComponent } from './Defi/register-defi/register-defi.component';
 import { ListDefiComponent } from './Defi/list-defi/list-defi.component';
 import { DetailsDefiComponent } from './Defi/details-defi/details-defi.component';
+import { AcceptedUsersDialogComponent } from './Defi/accepted-users-dialog/accepted-users-dialog.component';
 
 
 
@@ -154,6 +155,7 @@ import { DetailsDefiComponent } from './Defi/details-defi/details-defi.component
     RegisterDefiComponent,
     ListDefiComponent,
     DetailsDefiComponent,
+    AcceptedUsersDialogComponent,
 
   ],
   imports: [

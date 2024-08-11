@@ -5,8 +5,9 @@ import { notification } from '../model/Notification';
 import { Router } from '@angular/router';
 import { CarppolingServiceService } from '../Service/carppoling-service.service';
 import Swal from 'sweetalert2';
-import { NotificationsDialogComponent } from '../Carpooling/notifications-dialog/notifications-dialog.component';
+import { NotificationsDialogComponent } from '../notifications-dialog/notifications-dialog.component';
 import { DatePipe } from '@angular/common';
+import { DefiServiceService } from '../Service/defi-service.service';
 
 @Component({
   selector: 'app-profil',
@@ -14,7 +15,7 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./profil.component.css']
 })
 export class ProfilComponent {
-  constructor(private datePipe: DatePipe,private dialog :MatDialog ,private authService: AuthService,private router : Router,private productservice:CarppolingServiceService) {}
+  constructor(private datePipe: DatePipe,private dialog :MatDialog ,private authService: AuthService,private router : Router,private productservice:DefiServiceService) {}
 
   logout() {
     this.authService.logout(); // Appelle la méthode de déconnexion
@@ -39,17 +40,17 @@ export class ProfilComponent {
     return num < 10 ? `0${num}` : `${num}`;
   }
 ngOnInit(): void {
-  
-  this.getpoint();
-  
-  
+
+  this.getPoints1();
+
+
   this.notifications = this.trierNotificationsParDate(this.notifications);
 
   this.loadNotifications();
   // Récupérer le nom d'utilisateur après avoir chargé les notifications
   this.loggedInUser = this.authService.getUserIdFromToken();
          console.log("ddddddddddddd "+this.loggedInUser);
-         
+
      }
      // Déclarez une variable pour contrôler la visibilité des notifications
 showNotifications: boolean = false;
@@ -69,7 +70,7 @@ toggleNotifications1() {
 
      notifications: notification[] = [];
      loggedInUser: string | null = null;
- 
+
      trierNotificationsParDate(notifications: any[]): any[] {
       return notifications.sort((a, b) => {
         const dateA = new Date(a.timestamp).getTime();
@@ -77,7 +78,7 @@ toggleNotifications1() {
         return dateB - dateA; // Tri décroissant pour avoir les dates les plus récentes en premier
       });
     }
-    
+
      loadNotifications(): void {
        this.productservice.getNotificationsForUser().subscribe(
          notifications => {
@@ -85,8 +86,8 @@ toggleNotifications1() {
            this.trierNotificationsParDate(this.notifications); // Appeler la méthode pour trier les notifications
            console.log(notifications);
            console.log("username  dddddddd "+this.loggedInUser);
- 
-           
+
+
          },
          error => {
            console.error('Erreur lors de la récupération des notifications :', error);
@@ -98,10 +99,10 @@ toggleNotifications1() {
       if (!carpoolingId || !userId) {
         console.error('ID de covoiturage ou ID utilisateur non valide :', carpoolingId, userId);
         console.log(userId);
-        
+
         return;
       }
-    
+
       this.productservice.accepterOuRefuserCovoiturage(carpoolingId, true, userId)
         .subscribe(response => {
           console.log(userId);
@@ -115,21 +116,21 @@ toggleNotifications1() {
           // Gérez l'erreur ici
         });
     }
-  
+
     annulerAcceptationCovoiturage(carpoolingId: number, userId: number): void {
       if (!carpoolingId || !userId) {
         console.error('ID de covoiturage ou ID utilisateur non valide :', carpoolingId, userId);
         console.log(userId);
-        
+
         return;
       }
-    
+
       this.productservice.annulerAcceptationCovoiturage(carpoolingId, userId)
         .subscribe(response => {
           console.log(userId);
           Swal.fire('Success!', 'User Annuler avec succès', 'success');
 
-    
+
           console.log('Covoiturage annule avec succès :', response);
           // Traitez la réponse ici
         }, error => {
@@ -139,13 +140,13 @@ toggleNotifications1() {
           // Gérez l'erreur ici
         });
     }
-    
+
     refuserCovoiturage(carpoolingId: number, userId: number): void {
       if (!carpoolingId || !userId) {
         console.error('ID de covoiturage ou ID utilisateur non valide :', carpoolingId, userId);
         return;
       }
-    
+
       this.productservice.accepterOuRefuserCovoiturage(carpoolingId, false, userId)
         .subscribe(response => {
           console.log('Covoiturage refusé avec succès :', response);
@@ -172,4 +173,18 @@ getpoint(){
         console.log(error);
       }
     );
-}}
+}
+points :number = 0;
+  error: string | null = null;
+getPoints1() {
+  this.productservice.calculatePoints1().subscribe(
+    (response) => {
+      this.points = response;
+    },
+    (error) => {
+      console.error('Error calculating points', error);
+      this.error = 'Failed to calculate points. Please try again later.';
+    }
+  );
+}
+}

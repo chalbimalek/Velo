@@ -63,7 +63,7 @@ export class NotificationsDialogComponent {
         .subscribe(response => {
           console.log(userId);
           Swal.fire('Success!', 'User accepte avec succès', 'success');
-          console.log('Covoiturage accepté avec succès :', response);
+          console.log('Defi accepté avec succès :', response);
           // Traitez la réponse ici
         }, error => {
           console.error('Erreur lors de l\'acceptation du covoiturage :', error);
