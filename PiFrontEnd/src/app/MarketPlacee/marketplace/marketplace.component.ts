@@ -8,6 +8,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { ImageProcessingService } from 'src/app/image/image-processing.service';
 import { Category } from 'src/app/model/enumerations/Category';
 import { CarppolingServiceService } from 'src/app/Service/carppoling-service.service';
+import { DefiServiceService } from 'src/app/Service/defi-service.service';
 
 interface CustomWindow extends Window {
   embeddedChatbotConfig?: {
@@ -26,7 +27,7 @@ p:number=1;
   searchTerm: string='' ;
   public productDetails: Product[] = [];
 
-  constructor(private CarppolingService:CarppolingServiceService,private router : Router,private productservice:ProductService,private sanitizer:DomSanitizer,private imageProcessingService:ImageProcessingService){
+  constructor(private CarppolingService:DefiServiceService,private router : Router,private productservice:ProductService,private sanitizer:DomSanitizer,private imageProcessingService:ImageProcessingService){
     const customWindow: CustomWindow = window;
 
     customWindow.embeddedChatbotConfig = {
@@ -60,7 +61,7 @@ p:number=1;
     this.productservice.getAllProduct(this.pageNumber).
     pipe(
      map((products: Product[],i) => products.map((product: Product) => this.imageProcessingService.createImages(product)))
-  
+
     ).
     subscribe(
       (resp:Product[])=>{
@@ -84,7 +85,7 @@ p:number=1;
 
   formData: FormData = new FormData();
 
- 
+
   product!:Product ;
 
   onFileSelected(event: any) {
@@ -98,7 +99,7 @@ p:number=1;
   showLoadButton = false;
 
 
- 
+
   public getAllProducts(){
     this.productservice.getAllProduct(this.pageNumber)
     .pipe(
@@ -124,7 +125,7 @@ p:number=1;
      this.pageNumber=i;
      this.getAllProduct();
   }
- 
+
   updatePriceRange(event: Event) {
     const target = (event.target as HTMLInputElement);
     if (target && target.value) {
@@ -139,7 +140,7 @@ p:number=1;
 
 
 
-  
+
   currentDate: Date = new Date();
 // | paginate :{itemsPerPage:5,currentPage:p};
 
@@ -177,7 +178,7 @@ showAllProducts(){
 totalCarpoolings: number = 0;
 
 getpoint(){
-  this.CarppolingService.calculatePoints().subscribe(
+  this.CarppolingService.calculatePoints1().subscribe(
     (total: number) => {
       this.totalCarpoolings = total;
       console.log("your  points :" ,this.totalCarpoolings);
@@ -225,8 +226,8 @@ calculateDiscount(originalPrice: number): number {
   // Assurer que la réduction totale ne dépasse pas le prix original
   const discountedPrice = originalPrice - totalDiscount;
     console.log("points   ",this.totalCarpoolings);
-    
-    
+
+
   // Assurer que le prix après réduction est positif
   return Math.max(totalDiscount, 0);
 }

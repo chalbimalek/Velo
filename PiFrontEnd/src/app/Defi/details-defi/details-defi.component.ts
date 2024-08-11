@@ -52,7 +52,7 @@ id:any
   reserverCovoiturage(id: number): void {
     this.productService.reserverCovoiturage(id).subscribe(
       response => {
-        console.log('Réservation effectuée avec succès :', response);
+        console.log('Participation effectuée avec succès :', response);
         Swal.fire('Success!', 'Rating saved successfully.', 'success');
 
         // Traitez la réponse ou effectuez d'autres actions nécessaires ici
